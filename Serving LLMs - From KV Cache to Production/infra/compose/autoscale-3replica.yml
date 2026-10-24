@@ -1,0 +1,30 @@
+# Lesson 31: three SIMULATED vLLM replicas (no model runs). r1 runs; r2 and r3 are stopped by the notebook
+# and started by the autoscaler. Started from the notebook: docker compose -p tut-kv-forge-15h-31 -f ../infra/compose/autoscale-3replica.yml up -d --build
+# SIM_COLD_START_S is a stand-in for loading weights (seconds); the real vLLM cold start is minutes (lesson 27).
+x-replica: &replica
+  build:
+    context: ../../apps/31
+    dockerfile_inline: |
+      FROM python:3.12-slim-bookworm
+      RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+      WORKDIR /app
+      COPY mock_vllm.py .
+      CMD ["python", "mock_vllm.py"]
+  environment:
+    SIM_COLD_START_S: "10"
+services:
+  r1:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r1"]
+    ports:
+      - "127.0.0.1:8310:8000"
+  r2:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r2"]
+    ports:
+      - "127.0.0.1:8311:8000"
+  r3:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r3"]
+    ports:
+      - "127.0.0.1:8312:8000"

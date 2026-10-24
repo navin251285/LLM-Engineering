@@ -1,0 +1,49 @@
+# Lesson 40: two regions of SIMULATED vLLM replicas behind a global gateway (no model runs).
+# Replicas are the lesson 33 mock (apps/33/mock_vllm.py). Started from the notebook with:
+#   docker compose -p tut-kv-forge-15h-40 -f ../infra/compose/capstone-two-region.yml up -d --build
+# Only the global gateway is published, on 127.0.0.1:8400 (ports for lesson 40: 8400 to 8409).
+x-replica: &replica
+  build:
+    context: ../../apps/33
+    dockerfile_inline: |
+      FROM python:3.12-slim-bookworm
+      RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+      WORKDIR /app
+      COPY mock_vllm.py .
+      CMD ["python", "mock_vllm.py"]
+  environment:
+    QUEUE_LIMIT: "8"
+  restart: "no"
+x-gw: &gw
+  image: nginx:1.29-alpine
+  command: ["/bin/sh", "-c", "envsubst '$$R1 $$R2' < /tpl/nginx-region.conf > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"]
+  restart: "no"
+services:
+  a1:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "a1"]
+  a2:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "a2"]
+  b1:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "b1"]
+  b2:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "b2"]
+  gw-a:
+    <<: *gw
+    environment: {R1: a1, R2: a2}
+    volumes: ["./capstone-nginx-region.conf:/tpl/nginx-region.conf:ro"]
+    depends_on: [a1, a2]
+  gw-b:
+    <<: *gw
+    environment: {R1: b1, R2: b2}
+    volumes: ["./capstone-nginx-region.conf:/tpl/nginx-region.conf:ro"]
+    depends_on: [b1, b2]
+  global:
+    image: nginx:1.29-alpine
+    volumes: ["./capstone-nginx-global.conf:/etc/nginx/conf.d/default.conf:ro"]
+    ports: ["127.0.0.1:8400:80"]
+    depends_on: [gw-a, gw-b]
+    restart: "no"

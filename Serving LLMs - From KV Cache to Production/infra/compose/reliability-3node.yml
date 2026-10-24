@@ -1,0 +1,31 @@
+# Lesson 33: three SIMULATED vLLM replicas (no model runs) for the reliability drill.
+# Each replica applies a queue limit and serves vLLM metric names. Image tags are pinned; no account, no key.
+# Started from the notebook: docker compose -p tut-kv-forge-15h-33 -f ../infra/compose/reliability-3node.yml up -d --build
+x-replica: &replica
+  build:
+    context: ../../apps/33
+    dockerfile_inline: |
+      FROM python:3.12-slim-bookworm
+      RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+      WORKDIR /app
+      COPY mock_vllm.py .
+      CMD ["python", "mock_vllm.py"]
+  environment:
+    QUEUE_LIMIT: "8"
+  restart: "no"
+services:
+  r1:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r1"]
+    ports:
+      - "127.0.0.1:8330:8000"
+  r2:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r2"]
+    ports:
+      - "127.0.0.1:8331:8000"
+  r3:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r3"]
+    ports:
+      - "127.0.0.1:8332:8000"

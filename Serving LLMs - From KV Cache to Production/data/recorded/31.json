@@ -1,0 +1,17 @@
+{
+ "lesson": "31",
+ "image": "python:3.12-slim-bookworm (replicas), fastapi 0.156.8, prometheus-client 0.26.0",
+ "recorded": "2026-10-23",
+ "note": "a live run of this notebook on the course machine (Docker, 4 CPU cores, no GPU), 2026-10-23: 3 SIMULATED vLLM replicas (no model ran); the burst of 40 requests, the signals scraped from r1 during the burst, the queue rule's answer (capped at 3), and the seconds from compose start to /health 200 (stand-in cold start 10 s plus container start). metrics_text is r1's page during the burst.",
+ "signals": {
+  "waiting": 36.0,
+  "running": 4.0,
+  "kv": 1.0
+ },
+ "desired": 3,
+ "ready_s": {
+  "r2": 11.1,
+  "r3": 12.2
+ },
+ "metrics_text": "# HELP vllm:num_requests_running Requests in the batch\n# TYPE vllm:num_requests_running gauge\nvllm:num_requests_running 4.0\n# HELP vllm:num_requests_waiting Requests waiting for a slot\n# TYPE vllm:num_requests_waiting gauge\nvllm:num_requests_waiting 36.0\n# HELP vllm:kv_cache_usage_perc KV cache usage (0 to 1)\n# TYPE vllm:kv_cache_usage_perc gauge\nvllm:kv_cache_usage_perc 1.0\n# HELP vllm:request_success_total Finished requests\n# TYPE vllm:request_success_total counter\nvllm:request_success_total 0.0\n# HELP vllm:request_success_created Finished requests\n# TYPE vllm:request_success_created gauge\nvllm:request_success_created 1.7927566516865711e+09\n"
+}

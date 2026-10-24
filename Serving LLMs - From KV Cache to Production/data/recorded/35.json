@@ -1,0 +1,327 @@
+{
+ "lesson": "35",
+ "image": "vllm/vllm-openai-cpu:v0.32.0",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct (served as brightside-qwen-0.5b)",
+ "recorded": "2026-10-23",
+ "note": "Recorded output of a live run of notebook 35 on the course machine (4 CPU cores, no GPU, Docker). Greedy decoding, 48 new tokens max. One engine at a time: stable (max-model-len 2048), then candidate (max-model-len 1600).",
+ "stable": {
+  "flags": [
+   "Qwen/Qwen2.5-0.5B-Instruct",
+   "--served-model-name",
+   "brightside-qwen-0.5b",
+   "--host",
+   "0.0.0.0",
+   "--dtype",
+   "float32",
+   "--enforce-eager",
+   "--max-num-seqs",
+   "4",
+   "--max-num-batched-tokens",
+   "2048",
+   "--kv-cache-memory-bytes",
+   "2147483648",
+   "--max-model-len",
+   "2048"
+  ],
+  "results": [
+   {
+    "id": 0,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can return a gift card if it is in good condition and meets the requirements of your store's policies. Please provide me with the details of the gift card so that I can assist you further.",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 1,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry, but I don't have access to your specific information about where your parcel is located. You may need to provide more details or contact the relevant party to get this information.",
+    "prompt_tokens": 1434
+   },
+   {
+    "id": 2,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry to hear that your password reset email was delayed. It's important to keep track of when you receive your new password so you can use it promptly. If you need assistance with resetting your password or any other questions related to this",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 3,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can change your billing date by following these steps:\n\n1. Go to the website or app where you made the payment.\n2. Look for an option to update your billing information.\n3. Enter the new billing date in the",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 4,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry to hear that you received an item that was not as expected. Can you please provide me with more details about the damage? What is the nature of the item (e.g., clothing, electronics, etc.) and how did",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 5,
+    "kind": "short",
+    "status": 200,
+    "answer": "A warranty claim typically takes between 4 to 14 business days from when you receive your product or service until it is resolved by the manufacturer. However, this can vary depending on the specific product and the circumstances of the claim. It",
+    "prompt_tokens": 1437
+   },
+   {
+    "id": 6,
+    "kind": "short",
+    "status": 200,
+    "answer": "As an AI language model, I don't have access to your specific situation or transaction details. However, in general, you can usually get a refund if there are no errors in the payment process and the items were delivered as intended.\n\nIf",
+    "prompt_tokens": 1438
+   },
+   {
+    "id": 7,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry to hear that your account has been locked. It's important to understand why this happened so you can take appropriate action. Here are some common reasons an account might be locked:\n\n- Account balance too low\n- Too many transactions",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 8,
+    "kind": "short",
+    "status": 200,
+    "answer": "Gift cards typically have an expiration date that is set by the merchant or company that issued them. The exact date can vary depending on the specific product or service being offered.\n\nFor example:\n\n- Some gift cards may have an expiration date of ",
+    "prompt_tokens": 1434
+   },
+   {
+    "id": 9,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry, but there is no specific information provided in your rule set about cancellation of deliveries. However, if you have any questions or need assistance with something else related to these rules, feel free to ask!",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 10,
+    "kind": "short",
+    "status": 200,
+    "answer": "As an AI language model, I do not have access to your personal information or financial details. Therefore, I cannot determine who can open your account based on the rules provided in this text. However, it is important to note that opening an",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 11,
+    "kind": "short",
+    "status": 200,
+    "answer": "A warranty claim is typically considered to be free of charge if it has been accepted by the customer as valid and covered under the terms of the warranty agreement. However, this can vary depending on the specific terms and conditions of the warranty.\n\nIn",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 12,
+    "kind": "short",
+    "status": 200,
+    "answer": "To get a refund from your card, you need to follow these steps:\n\n1. **Check Your Card Details**: Ensure that your card is still valid and that it has not been declined by any bank or credit card company.\n\n2. **",
+    "prompt_tokens": 1439
+   },
+   {
+    "id": 13,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can split a payment if it's done through a secure method like PayPal or Stripe. However, please note that splitting payments is generally not allowed under Rule 1 of our rules as it involves unauthorized transactions. Please ensure to follow",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 14,
+    "kind": "short",
+    "status": 200,
+    "answer": "Your billing date is determined by the order date of your last transaction. If you haven't made any transactions yet, your billing date will be set to the current day. However, if you have made a transaction in the past, it will",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 15,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can change your delivery address by contacting the delivery service provider or their customer support team. They will typically require you to provide your current contact information and any relevant details about your new address. Once they have received this information, they",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 16,
+    "kind": "long",
+    "status": 200,
+    "answer": "Based on the provided rules, here's what you need to do next:\n\n### Rule 1: Check Order Date\n- **Check Order Date**: Confirm that your order is still active (i.e., it hasn't been canceled or returned",
+    "prompt_tokens": 1685
+   },
+   {
+    "id": 17,
+    "kind": "long",
+    "status": 200,
+    "answer": "Based on the provided rules, here's what you need to do next:\n\n### Rule 1: For a Delivery Request\n- **Check the Order Date**: Confirm that the order is still open (i.e., not expired).\n- **",
+    "prompt_tokens": 1685
+   },
+   {
+    "id": 18,
+    "kind": "long",
+    "status": 200,
+    "answer": "Based on the provided rules, here's what you need to do next:\n\n### Rule 1: For a Delivery Request\n- **Check the Order Date**: Confirm that the order is still open (i.e., not expired).\n- **",
+    "prompt_tokens": 1685
+   },
+   {
+    "id": 19,
+    "kind": "long",
+    "status": 200,
+    "answer": "Based on the provided rules, here's what you need to do next:\n\n### Rule 1: For a Delivery Request\n- **Check Order Date**: Confirm that the order is still open (i.e., not expired).\n- **Confirm",
+    "prompt_tokens": 1685
+   }
+  ]
+ },
+ "candidate": {
+  "flags": [
+   "Qwen/Qwen2.5-0.5B-Instruct",
+   "--served-model-name",
+   "brightside-qwen-0.5b",
+   "--host",
+   "0.0.0.0",
+   "--dtype",
+   "float32",
+   "--enforce-eager",
+   "--max-num-seqs",
+   "4",
+   "--max-num-batched-tokens",
+   "2048",
+   "--kv-cache-memory-bytes",
+   "2147483648",
+   "--max-model-len",
+   "1600"
+  ],
+  "results": [
+   {
+    "id": 0,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can return a gift card if it is in good condition and meets the requirements of your store's policies. Please provide me with the details of the gift card so that I can assist you further.",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 1,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry, but I don't have access to your specific information about where your parcel is located. You may need to provide more details or contact the relevant party to get this information.",
+    "prompt_tokens": 1434
+   },
+   {
+    "id": 2,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry to hear that your password reset email was delayed. It's important to keep track of when you receive your new password so you can use it promptly. If you need assistance with resetting your password or any other questions related to this",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 3,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can change your billing date by following these steps:\n\n1. Go to the website or app where you made the payment.\n2. Look for an option to update your billing information.\n3. Enter the new billing date in the",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 4,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry to hear that you received an item that was not as expected. Can you please provide me with more details about the damage? What is the nature of the item (e.g., clothing, electronics, etc.) and how did",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 5,
+    "kind": "short",
+    "status": 200,
+    "answer": "A warranty claim typically takes between 4 to 14 business days from when you receive your product or service until it is resolved by the manufacturer. However, this can vary depending on the specific product and the circumstances of the claim. It",
+    "prompt_tokens": 1437
+   },
+   {
+    "id": 6,
+    "kind": "short",
+    "status": 200,
+    "answer": "As an AI language model, I don't have access to your specific situation or transaction details. However, in general, you can usually get a refund if there are no errors in the payment process and the items were delivered as intended.\n\nIf",
+    "prompt_tokens": 1438
+   },
+   {
+    "id": 7,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry to hear that your account has been locked. It's important to understand why this happened so you can take appropriate action. Here are some common reasons an account might be locked:\n\n- Account balance too low\n- Too many transactions",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 8,
+    "kind": "short",
+    "status": 200,
+    "answer": "Gift cards typically have an expiration date that is set by the merchant or company that issued them. The exact date can vary depending on the specific product or service being offered.\n\nFor example:\n\n- Some gift cards may have an expiration date of ",
+    "prompt_tokens": 1434
+   },
+   {
+    "id": 9,
+    "kind": "short",
+    "status": 200,
+    "answer": "I'm sorry, but there is no specific information provided in your rule set about cancellation of deliveries. However, if you have any questions or need assistance with something else related to these rules, feel free to ask!",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 10,
+    "kind": "short",
+    "status": 200,
+    "answer": "As an AI language model, I do not have access to your personal information or financial details. Therefore, I cannot determine who can open your account based on the rules provided in this text. However, it is important to note that opening an",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 11,
+    "kind": "short",
+    "status": 200,
+    "answer": "A warranty claim is typically considered to be free of charge if it has been accepted by the customer as valid and covered under the terms of the warranty agreement. However, this can vary depending on the specific terms and conditions of the warranty.\n\nIn",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 12,
+    "kind": "short",
+    "status": 200,
+    "answer": "To get a refund from your card, you need to follow these steps:\n\n1. **Check Your Card Details**: Ensure that your card is still valid and that it has not been declined by any bank or credit card company.\n\n2. **",
+    "prompt_tokens": 1439
+   },
+   {
+    "id": 13,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can split a payment if it's done through a secure method like PayPal or Stripe. However, please note that splitting payments is generally not allowed under Rule 1 of our rules as it involves unauthorized transactions. Please ensure to follow",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 14,
+    "kind": "short",
+    "status": 200,
+    "answer": "Your billing date is determined by the order date of your last transaction. If you haven't made any transactions yet, your billing date will be set to the current day. However, if you have made a transaction in the past, it will",
+    "prompt_tokens": 1435
+   },
+   {
+    "id": 15,
+    "kind": "short",
+    "status": 200,
+    "answer": "Yes, you can change your delivery address by contacting the delivery service provider or their customer support team. They will typically require you to provide your current contact information and any relevant details about your new address. Once they have received this information, they",
+    "prompt_tokens": 1436
+   },
+   {
+    "id": 16,
+    "kind": "long",
+    "status": 400,
+    "error": "{\"error\":{\"message\":\"This model's maximum context length is 1600 tokens. However, your prompt contains at least 1601 input tokens, which exceeds this limit even without any output tokens. Please reduc"
+   },
+   {
+    "id": 17,
+    "kind": "long",
+    "status": 400,
+    "error": "{\"error\":{\"message\":\"This model's maximum context length is 1600 tokens. However, your prompt contains at least 1601 input tokens, which exceeds this limit even without any output tokens. Please reduc"
+   },
+   {
+    "id": 18,
+    "kind": "long",
+    "status": 400,
+    "error": "{\"error\":{\"message\":\"This model's maximum context length is 1600 tokens. However, your prompt contains at least 1601 input tokens, which exceeds this limit even without any output tokens. Please reduc"
+   },
+   {
+    "id": 19,
+    "kind": "long",
+    "status": 400,
+    "error": "{\"error\":{\"message\":\"This model's maximum context length is 1600 tokens. However, your prompt contains at least 1601 input tokens, which exceeds this limit even without any output tokens. Please reduc"
+   }
+  ]
+ }
+}

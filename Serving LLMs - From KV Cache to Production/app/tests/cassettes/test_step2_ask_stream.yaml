@@ -1,0 +1,265 @@
+interactions:
+- request:
+    body: '{"messages":[{"role":"system","content":"You are the Brightside support
+      desk. Answer in one or two short sentences, using only this policy. Policy:
+      opened items can be returned within 30 days with the receipt. Refunds reach
+      the card in 5 business days."},{"role":"user","content":"Can I return an opened
+      item?"}],"model":"brightside-qwen-0.5b","max_tokens":60,"stream":true,"stream_options":{"include_usage":true},"temperature":0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, br
+      connection:
+      - keep-alive
+      content-length:
+      - '430'
+      content-type:
+      - application/json
+      host:
+      - localhost:8000
+      user-agent:
+      - OpenAI/Python 2.54.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 2.54.0
+      x-stainless-read-timeout:
+      - '1500.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.13
+    method: POST
+    uri: http://localhost:8000/v1/chat/completions
+  response:
+    body:
+      string: 'data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}],"prompt_token_ids":null,"prompt_text":null}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"Yes"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":","},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        you"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        can"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        return"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        an"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        opened"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        item"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        within"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        "},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"3"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"0"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        days"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        of"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        receiving"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        it"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        with"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        a"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        valid"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        receipt"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"."},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":""},"logprobs":null,"finish_reason":"stop","stop_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-9e31f049ff3a87ba","object":"chat.completion.chunk","created":1792831929,"model":"brightside-qwen-0.5b","choices":[],"usage":{"prompt_tokens":68,"total_tokens":90,"completion_tokens":22},"system_fingerprint":"vllm-0.32.0-d799d186"}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      content-type:
+      - text/event-stream; charset=utf-8
+      date:
+      - Sat, 24 Oct 2026 08:52:08 GMT
+      server:
+      - uvicorn
+      transfer-encoding:
+      - chunked
+      vary:
+      - Origin
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"role":"system","content":"You are the Brightside support
+      desk. Answer in one or two short sentences, using only this policy. Policy:
+      opened items can be returned within 30 days with the receipt. Refunds reach
+      the card in 5 business days."},{"role":"user","content":"How long do refunds
+      take?"}],"model":"brightside-qwen-0.5b","max_tokens":60,"stream":true,"stream_options":{"include_usage":true},"temperature":0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, br
+      connection:
+      - keep-alive
+      content-length:
+      - '427'
+      content-type:
+      - application/json
+      host:
+      - localhost:8000
+      user-agent:
+      - OpenAI/Python 2.54.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 2.54.0
+      x-stainless-read-timeout:
+      - '1500.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.13
+    method: POST
+    uri: http://localhost:8000/v1/chat/completions
+  response:
+    body:
+      string: 'data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}],"prompt_token_ids":null,"prompt_text":null}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"Ref"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"unds"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        typically"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        reach"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        your"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        card"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        within"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        "},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"5"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        business"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"
+        days"},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":"."},"logprobs":null,"finish_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[{"index":0,"delta":{"content":""},"logprobs":null,"finish_reason":"stop","stop_reason":null,"token_ids":null}]}
+
+
+        data: {"id":"chatcmpl-b08c16a478cd875f","object":"chat.completion.chunk","created":1792831935,"model":"brightside-qwen-0.5b","choices":[],"usage":{"prompt_tokens":67,"total_tokens":80,"completion_tokens":13},"system_fingerprint":"vllm-0.32.0-d799d186"}
+
+
+        data: [DONE]
+
+
+        '
+    headers:
+      content-type:
+      - text/event-stream; charset=utf-8
+      date:
+      - Sat, 24 Oct 2026 08:52:14 GMT
+      server:
+      - uvicorn
+      transfer-encoding:
+      - chunked
+      vary:
+      - Origin
+    status:
+      code: 200
+      message: OK
+version: 1

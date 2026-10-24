@@ -1,0 +1,7 @@
+{
+  "lesson": "13",
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "recorded": "2026-10-21",
+  "note": "recorded output: printed by the pinned vLLM CPU image (docker run --entrypoint python3 -I -c ...)",
+  "stdout": "policy default: fcfs\npolicy values: ('fcfs', 'priority')\nkv_offloading_size default: None\nkv_offloading_backend default: native\nrecompute reset: request.num_computed_tokens = 0\nlmcache: not in this image (the native backend needs no extra package)\n"
+}

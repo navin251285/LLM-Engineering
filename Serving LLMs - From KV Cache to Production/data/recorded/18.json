@@ -1,0 +1,34 @@
+{
+ "lesson": "18",
+ "image": "vllm/vllm-openai-cpu:v0.32.0",
+ "recorded": "2026-10-22",
+ "note": "a live run of this notebook on the course machine (Docker, pinned CPU image, 4 CPU cores, no GPU), 2026-10-22; the first request of each server took about 10 minutes",
+ "A": {
+  "label": "A: prefix caching off",
+  "ttft_s": [
+   20.187,
+   22.368,
+   21.17
+  ],
+  "p50": 21.17,
+  "max": 22.368,
+  "hit_rate": 0.0,
+  "prefix_caching": "False",
+  "kv_tokens": 87296,
+  "prompt_tokens": 1454
+ },
+ "B": {
+  "label": "B: lesson 16 flags",
+  "ttft_s": [
+   1.132,
+   1.367,
+   1.022
+  ],
+  "p50": 1.132,
+  "max": 1.367,
+  "hit_rate": 0.969,
+  "prefix_caching": "True",
+  "kv_tokens": 87296,
+  "prompt_tokens": 1454
+ }
+}

@@ -1,0 +1,7 @@
+{
+  "lesson": "12",
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "recorded": "2026-10-21",
+  "note": "recorded output: printed by the pinned vLLM CPU image (docker run --entrypoint python3 -I -c ...)",
+  "stdout": "max_num_seqs: 128\nmax_num_batched_tokens: 2048\nenable_chunked_prefill: True\nscheduler class: vllm.v1.core.sched.scheduler.Scheduler\nscheduler comment: # There's no \"decoding phase\" nor \"prefill phase\" in the scheduler.\n"
+}

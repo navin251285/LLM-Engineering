@@ -1,0 +1,40 @@
+# Lesson 30: three SIMULATED vLLM replicas (no model runs) for the routing lab.
+# Each replica serves the vLLM metric names on /metrics. Image tags are pinned; no account, no key.
+# Started from the notebook: docker compose -p tut-kv-forge-15h-30 -f ../infra/compose/routing-3replica.yml up -d --build
+services:
+  r1:
+    build:
+      context: ../../apps/30
+      dockerfile_inline: |
+        FROM python:3.12-slim-bookworm
+        RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+        WORKDIR /app
+        COPY mock_vllm.py .
+        CMD ["python", "mock_vllm.py"]
+    command: ["python", "mock_vllm.py", "r1"]
+    ports:
+      - "127.0.0.1:8300:8000"
+  r2:
+    build:
+      context: ../../apps/30
+      dockerfile_inline: |
+        FROM python:3.12-slim-bookworm
+        RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+        WORKDIR /app
+        COPY mock_vllm.py .
+        CMD ["python", "mock_vllm.py"]
+    command: ["python", "mock_vllm.py", "r2"]
+    ports:
+      - "127.0.0.1:8301:8000"
+  r3:
+    build:
+      context: ../../apps/30
+      dockerfile_inline: |
+        FROM python:3.12-slim-bookworm
+        RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+        WORKDIR /app
+        COPY mock_vllm.py .
+        CMD ["python", "mock_vllm.py"]
+    command: ["python", "mock_vllm.py", "r3"]
+    ports:
+      - "127.0.0.1:8302:8000"

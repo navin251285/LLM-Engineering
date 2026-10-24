@@ -1,0 +1,109 @@
+# Lesson 32: the Brightside server as Kubernetes objects, for reading and offline validation (no cluster is started in this course).
+# GKE GPU conventions (docs.cloud.google.com/kubernetes-engine/docs/how-to/gpus): node label cloud.google.com/gke-accelerator,
+# GPU resource nvidia.com/gpu, GPU taint nvidia.com/gpu=present:NoSchedule (GKE adds it only when the cluster has a non-GPU pool).
+# Spot (docs.cloud.google.com/kubernetes-engine/docs/how-to/spot-vms): GKE adds the label cloud.google.com/gke-spot=true to Spot nodes.
+# The Spot TAINT is one you set when you create the pool, e.g. --node-taints=cloud.google.com/gke-spot="true":NoSchedule --spot;
+# the toleration below matches the taint you put on the pool.
+# Image: the CUDA vLLM image at the same version as the CPU image in lesson 08.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brightside-serve
+  labels:
+    app: brightside-serve
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: brightside-serve
+  template:
+    metadata:
+      labels:
+        app: brightside-serve
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-accelerator: nvidia-l4   # the GPU type: the scheduler places the pod only on L4 nodes
+        cloud.google.com/gke-spot: "true"             # optional: run on the Spot node pool (cheaper, can be reclaimed); GKE adds this label
+      tolerations:
+        - key: nvidia.com/gpu                         # GKE taints GPU nodes; only pods that tolerate it may land there
+          operator: Equal
+          value: present
+          effect: NoSchedule
+        - key: cloud.google.com/gke-spot             # matches the taint YOU set on the Spot pool (--node-taints); GKE adds only the label
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+      terminationGracePeriodSeconds: 120             # longer than the longest generation, so a drain finishes in-flight streams
+      containers:
+        - name: vllm
+          image: vllm/vllm-openai:v0.32.0
+          args:
+            - "Qwen/Qwen2.5-0.5B-Instruct"
+            - "--served-model-name"
+            - "brightside"
+            - "--max-model-len"
+            - "4096"
+            - "--port"
+            - "8000"
+          env:
+            - name: VLLM_API_KEY                      # read by the server; the value comes from a Secret, never from this file
+              valueFrom:
+                secretKeyRef:
+                  name: brightside-vllm-key
+                  key: api-key
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "4"
+              memory: 16Gi
+            limits:
+              nvidia.com/gpu: 1                      # one GPU per pod; the device plugin makes it visible
+          volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm                    # vLLM needs shared memory for its worker queues
+          startupProbe:                              # weights take minutes: allow up to 10 minutes before the other probes count
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 60
+          readinessProbe:                            # a replica takes traffic only when this passes
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 60
+            periodSeconds: 5
+          livenessProbe:                             # restart a replica that stops answering
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 60
+            periodSeconds: 10
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brightside-serve
+spec:
+  selector:
+    app: brightside-serve
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: brightside-serve
+spec:
+  minAvailable: 1                                    # a node drain may not take the last replica
+  selector:
+    matchLabels:
+      app: brightside-serve

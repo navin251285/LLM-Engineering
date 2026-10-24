@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brightside support desk</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 680px; margin: 2rem auto; padding: 0 1rem; color: #1d1d1f; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.05rem; margin: 2rem 0 0.4rem; }
+    .status { font-size: 0.9rem; color: #555; margin-bottom: 1.5rem; }
+    label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+    textarea { width: 100%; box-sizing: border-box; min-height: 5rem; padding: 0.6rem; font: inherit; border: 1px solid #bbb; border-radius: 6px; }
+    button { margin-top: 0.6rem; padding: 0.5rem 1.2rem; font: inherit; border: 0; border-radius: 6px; background: #1b5e20; color: #fff; cursor: pointer; }
+    button:disabled { background: #999; cursor: default; }
+    #result { margin-top: 1.5rem; padding: 1rem; border-radius: 6px; background: #f4f6f4; min-height: 2.5rem; white-space: pre-wrap; }
+    #result.error { background: #fdecea; color: #8a1c12; }
+    .meta { margin-top: 0.6rem; font-size: 0.85rem; color: #555; }
+    #stats { font-size: 0.9rem; background: #f4f6f4; border-radius: 6px; padding: 0.8rem 1rem; }
+    .settings { font-size: 0.85rem; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Brightside support desk</h1>
+  <p class="status" id="health">Checking the service...</p>
+
+  <form id="ask-form">
+    <label for="question">Ask a question about returns or refunds</label>
+    <textarea id="question" placeholder="Can I return an opened item?" required minlength="3" maxlength="1000"></textarea>
+    <button type="submit" id="send">Ask</button>
+  </form>
+
+  <div id="result" aria-live="polite">The answer appears here.</div>
+  <div class="meta" id="meta"></div>
+
+  <h2>Latency so far</h2>
+  <div id="stats">No answers yet.</div>
+  <p class="settings" id="settings"></p>
+
+  <script>
+    const form = document.getElementById("ask-form");
+    const question = document.getElementById("question");
+    const send = document.getElementById("send");
+    const result = document.getElementById("result");
+    const meta = document.getElementById("meta");
+    const health = document.getElementById("health");
+    const stats = document.getElementById("stats");
+    const settings = document.getElementById("settings");
+
+    // Milliseconds as "412 ms" or, from one second up, "1.9 s".
+    function fmt(ms) {
+      if (ms === null || ms === undefined) return "n/a";
+      return ms >= 1000 ? (ms / 1000).toFixed(2) + " s" : Math.round(ms) + " ms";
+    }
+
+    // Ask the service whether it is up (GET /health).
+    fetch("/health")
+      .then((r) => r.json())
+      .then((body) => { health.textContent = "Service is up (version " + body.version + ")."; })
+      .catch(() => { health.textContent = "The service is not reachable."; });
+
+    // The tuned settings and the targets the latency is judged against (GET /settings).
+    fetch("/settings")
+      .then((r) => r.json())
+      .then((s) => {
+        settings.textContent = "Engine settings: model " + s.model + ", answers up to " + s.max_tokens +
+          " tokens, length limit " + s.max_model_len + ". Targets: first token within " + s.slo.ttft_s +
+          " s, " + s.slo.tpot_ms + " ms per token.";
+      })
+      .catch(() => { settings.textContent = ""; });
+
+    // Show the rolling latency numbers (GET /stats).
+    async function showStats() {
+      try {
+        const s = await (await fetch("/stats")).json();
+        if (!s.answers) { stats.textContent = "No answers yet."; return; }
+        stats.textContent = "Last " + s.answers + " answers: first token p50 " + fmt(s.ttft_ms_p50) +
+          ", p95 " + fmt(s.ttft_ms_p95) + ". Time per token p50 " + fmt(s.tpot_ms_p50) +
+          ", p95 " + fmt(s.tpot_ms_p95) + ". Within both targets: " + Math.round(s.within_slo * 100) +
+          "%. Errors: " + s.errors + ".";
+      } catch (err) {
+        stats.textContent = "The statistics are not reachable.";
+      }
+    }
+    showStats();
+
+    // Send the question to POST /ask and show the reply, its timing, or the error the API returned.
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const text = question.value.trim();
+      if (text.length < 3) return;
+      send.disabled = true;
+      result.className = "";
+      result.textContent = "Asking the engine...";
+      meta.textContent = "";
+      try {
+        const response = await fetch("/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: text }),
+        });
+        const body = await response.json();
+        if (!response.ok) {
+          result.className = "error";
+          result.textContent = typeof body.detail === "string" ? body.detail : "The request failed.";
+        } else {
+          result.textContent = body.answer;
+          meta.textContent = "Model " + body.model + " · " + body.prompt_tokens + " tokens in, " +
+            body.completion_tokens + " out · first token after " + fmt(body.ttft_ms) +
+            " · total " + fmt(body.total_ms) + " · " + fmt(body.tpot_ms) + " per token";
+        }
+      } catch (err) {
+        result.className = "error";
+        result.textContent = "The service is not reachable.";
+      } finally {
+        send.disabled = false;
+        showStats();
+      }
+    });
+  </script>
+</body>
+</html>

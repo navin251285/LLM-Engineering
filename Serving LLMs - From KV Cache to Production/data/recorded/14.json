@@ -1,0 +1,7 @@
+{
+  "lesson": "14",
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "recorded": "2026-10-21",
+  "note": "recorded output: printed by the pinned vLLM CPU image (docker run --entrypoint python3 -I -c ...)",
+  "stdout": "enable_prefix_caching default: True | hash algo: sha256 | block_size: 16\nfull blocks: 6 6 | equal leading hashes: 6\nfirst token changed, equal leading hashes: 0\nhash bytes: 32\n"
+}

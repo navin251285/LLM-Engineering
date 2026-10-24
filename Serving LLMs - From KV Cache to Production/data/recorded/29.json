@@ -1,0 +1,29 @@
+{
+ "note": "live run of this notebook on the course machine (4 CPU cores, no GPU): three simulated replicas (a and c up, b down) and LiteLLM proxy 1.106.2; no model ran; the timings are the simulated ones plus queueing",
+ "results": {
+  "without: apps pick": {
+   "ok": 80,
+   "errors": 40,
+   "served": {
+    "a": 38,
+    "b": null,
+    "c": 42
+   },
+   "p95_s": 10.3
+  },
+  "with: one gateway": {
+   "ok": 120,
+   "errors": 0,
+   "served": {
+    "a": 80,
+    "b": null,
+    "c": 40
+   },
+   "p95_s": 7.0
+  }
+ },
+ "no_key": {
+  "status": "Server error '500 Internal Server Error' for url 'http://127.0.0.1:8290/v1/chat/completions'",
+  "log": "11:36:02 - LiteLLM Proxy:ERROR: auth_exception_handler.py:197 - litellm.proxy.proxy_server.user_api_key_auth(): Exception occured - No api key passed in."
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "lesson": "40",
+ "recorded": "2026-10-23",
+ "note": "Recorded output of the lesson 40 two-region Compose lab on the course machine (Docker, 4 CPU cores, no GPU). SIMULATED engines: the replicas are the lesson 33 mock (apps/33), which runs no model and answers with its replica name. Ten sequential calls per phase through the global gateway on 127.0.0.1:8400. Region a was stopped after the healthy phase and started again before the last phase, with an 11-second wait.",
+ "phases": {
+  "healthy": [
+   "a1",
+   "a1",
+   "a1",
+   "a2",
+   "a1",
+   "a2",
+   "a1",
+   "a2",
+   "a1",
+   "a2"
+  ],
+  "region a down": [
+   "HTTP 504",
+   "HTTP 504",
+   "b1",
+   "b2",
+   "b1",
+   "b2",
+   "b1",
+   "b2",
+   "b1",
+   "HTTP 504"
+  ],
+  "region a back": [
+   "a1",
+   "a2",
+   "a1",
+   "a2",
+   "a1",
+   "a2",
+   "a1",
+   "a2",
+   "a1",
+   "a2"
+  ]
+ }
+}

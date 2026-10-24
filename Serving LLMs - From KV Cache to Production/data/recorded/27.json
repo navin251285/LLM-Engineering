@@ -1,0 +1,81 @@
+{
+ "lesson": "27",
+ "image": "vllm/vllm-openai-cpu:v0.32.0",
+ "recorded": "2026-10-23",
+ "note": "a live run of this notebook on the course machine (Docker, pinned CPU image, 4 CPU cores, no GPU), 2026-10-23; the first request of the new server took 618 s; the whole run took about 36 min",
+ "results": {
+  "fixed_0.10": {
+   "rate": 0.1,
+   "done": 16,
+   "goodput_rps": 0.084,
+   "mean_in": 256,
+   "mean_out": 48,
+   "p50_ttft_ms": 3225,
+   "p95_ttft_ms": 4815,
+   "p95_tpot_ms": 427,
+   "p95_e2el_ms": 24077,
+   "mean_e2el_ms": 18376
+  },
+  "spread_0.10": {
+   "rate": 0.1,
+   "done": 16,
+   "goodput_rps": 0.091,
+   "mean_in": 247,
+   "mean_out": 46,
+   "p50_ttft_ms": 3522,
+   "p95_ttft_ms": 4751,
+   "p95_tpot_ms": 439,
+   "p95_e2el_ms": 26818,
+   "mean_e2el_ms": 17522
+  },
+  "spread_0.05": {
+   "rate": 0.05,
+   "done": 16,
+   "goodput_rps": 0.048,
+   "mean_in": 247,
+   "mean_out": 46,
+   "p50_ttft_ms": 1033,
+   "p95_ttft_ms": 1644,
+   "p95_tpot_ms": 279,
+   "p95_e2el_ms": 17779,
+   "mean_e2el_ms": 12113
+  },
+  "spread_0.15": {
+   "rate": 0.15,
+   "done": 16,
+   "goodput_rps": 0.135,
+   "mean_in": 247,
+   "mean_out": 46,
+   "p50_ttft_ms": 1071,
+   "p95_ttft_ms": 1799,
+   "p95_tpot_ms": 325,
+   "p95_e2el_ms": 21027,
+   "mean_e2el_ms": 13789
+  },
+  "spread_0.40": {
+   "rate": 0.4,
+   "done": 16,
+   "goodput_rps": 0.068,
+   "mean_in": 247,
+   "mean_out": 46,
+   "p50_ttft_ms": 11041,
+   "p95_ttft_ms": 21719,
+   "p95_tpot_ms": 374,
+   "p95_e2el_ms": 35136,
+   "mean_e2el_ms": 25522
+  },
+  "guidellm": {
+   "rate": 0.1,
+   "rps": 0.104,
+   "p95_ttft_ms": 41219,
+   "p95_itl_ms": 527.6
+  },
+  "locust": {
+   "users": 4,
+   "requests": 20,
+   "rps": 0.17,
+   "p50_ms": 16000,
+   "p95_ms": 24000
+  }
+ }
+}

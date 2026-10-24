@@ -1,0 +1,37 @@
+{
+  "lesson": "08",
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "recorded": "2026-10-22",
+  "note": "recorded output: a live run of this notebook on the course machine (Docker, pinned CPU image, 4 CPU cores, no GPU), 2026-10-22",
+  "first_request": "HTTP 200 after 342 s (one-time CPU warm-up)",
+  "models": [
+    "brightside-qwen-0.5b"
+  ],
+  "reply": "Yes, you can return an opened item within 30 days of receiving it with a valid receipt.",
+  "usage": "68 / 22",
+  "stream_first_ms": 1503,
+  "stream_chunks": 21,
+  "stream_text": "Yes, you can return an opened item within 30 days of receiving it with a valid receipt.",
+  "sse_lines": [
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"},\"logprobs\":null,\"finish_reason\":null}],\"prompt_token_ids\":null,\"prompt_text\":null}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Yes\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\",\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" you\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" can\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" return\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" an\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" opened\"},\"logprobs\":null,\"finish_reason\":null,\"token_ids\":null}]}",
+    "data: {\"id\":\"chatcmpl-987141e85e152e3d\",\"object\":\"chat.completion.chunk\",\"created\":1792656480,\"model\":\"brightside-qwen-0.5b\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" item\"},\"logprobs\":null,\"finish_reason\":\"length\",\"stop_reason\":null,\"token_ids\":null}],\"system_fingerprint\":\"vllm-0.32.0-ea89a000\"}",
+    "data: [DONE]"
+  ],
+  "running_before": 1.0,
+  "running_after": 0.0,
+  "abort_seconds": 0.5,
+  "key_note": "no VLLM_API_KEY was set when recorded, so the lab server took calls without a key",
+  "wrong_model_error": "NotFoundError - Error code: 404 - {'error': {'message': 'The model `gpt-4o` does not exist. Valid aliases: brightside-qwen-0.5b.', 'type",
+  "served_names": [
+    "brightside-qwen-0.5b"
+  ],
+  "try_it": "12 text chunks; Refunds typically reach your card within 5 business days.",
+  "base_url_error": "NotFoundError - Error code: 404 - {'detail': 'Not Found'}"
+}

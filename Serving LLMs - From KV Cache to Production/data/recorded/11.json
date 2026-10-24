@@ -1,0 +1,7 @@
+{
+  "lesson": "11",
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "recorded": "2026-10-21",
+  "note": "recorded output: printed by the pinned vLLM CPU image (docker run --entrypoint python3 -I -c ...)",
+  "stdout": "default block_size: 16\npool of 10 blocks, free at start: 9\nhanded out ids: [1, 2, 3] | free now: 6\nafter free_blocks: 9 | usage: 0.0\n"
+}

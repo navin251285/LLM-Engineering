@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: brightside-desk
+Version: 0.2.0
+Summary: Brightside support desk: a FastAPI service that asks a local vLLM engine one question at a time
+Requires-Python: >=3.12
+Requires-Dist: fastapi>=0.150.0
+Requires-Dist: uvicorn>=0.54.0
+Requires-Dist: httpx>=0.28.1
+Requires-Dist: openai<3.0.0,>=2.20.0
+Provides-Extra: test
+Requires-Dist: pytest>=9.1.1; extra == "test"
+Requires-Dist: vcrpy>=8.3.0; extra == "test"

@@ -1,0 +1,7 @@
+{
+  "lesson": "15",
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "recorded": "2026-10-21",
+  "note": "recorded output: printed by the pinned vLLM CPU image (docker run --entrypoint vllm IMAGE serve --help=all, flag lines only)",
+  "stdout": "  --api-key API_KEY [API_KEY ...]\n  --host HOST           Host name. (default: None)\n  --port PORT           Port number. (default: 8000)\n  --served-model-name SERVED_MODEL_NAME [SERVED_MODEL_NAME ...]\n"
+}

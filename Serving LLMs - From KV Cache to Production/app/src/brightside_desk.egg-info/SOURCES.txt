@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/brightside_desk/__init__.py
+src/brightside_desk/__main__.py
+src/brightside_desk/api.py
+src/brightside_desk/config.py
+src/brightside_desk/engine.py
+src/brightside_desk/metrics.py
+src/brightside_desk.egg-info/PKG-INFO
+src/brightside_desk.egg-info/SOURCES.txt
+src/brightside_desk.egg-info/dependency_links.txt
+src/brightside_desk.egg-info/requires.txt
+src/brightside_desk.egg-info/top_level.txt
+src/brightside_desk/static/index.html
+tests/test_step1_ask.py
+tests/test_step2_tuned.py

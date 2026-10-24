@@ -1,0 +1,33 @@
+# Lesson 37 (checkpoint): three SIMULATED replicas for the operate-the-cluster drill.
+# The same mock engine as lesson 33 (apps/33/mock_vllm.py): it runs NO model, takes time, applies a queue limit
+# (503 when full) and exposes vLLM metric names. Pinned base image and pinned packages, as in lesson 33.
+# Started from the notebook: docker compose -p tut-kv-forge-15h-37 -f ../infra/compose/checkpoint-37-3node.yml up -d --build
+# Ports 8370 to 8372 (r1 to r3, container port 8000). No account, no key.
+x-replica: &replica
+  build:
+    context: ../../apps/33
+    dockerfile_inline: |
+      FROM python:3.12-slim-bookworm
+      RUN pip install --no-cache-dir fastapi==0.156.8 uvicorn==0.54.0 prometheus-client==0.26.0
+      WORKDIR /app
+      COPY mock_vllm.py .
+      CMD ["python", "mock_vllm.py"]
+  environment:
+    QUEUE_LIMIT: "8"
+  restart: "no"
+services:
+  r1:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r1"]
+    ports:
+      - "127.0.0.1:8370:8000"
+  r2:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r2"]
+    ports:
+      - "127.0.0.1:8371:8000"
+  r3:
+    <<: *replica
+    command: ["python", "mock_vllm.py", "r3"]
+    ports:
+      - "127.0.0.1:8372:8000"

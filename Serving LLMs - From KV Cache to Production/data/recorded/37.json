@@ -1,0 +1,199 @@
+{
+ "lesson": "37",
+ "recorded": "2026-10-23",
+ "note": "Recorded output: a live run of this notebook (notebooks/37_checkpoint-4.ipynb) on the course machine on 2026-10-23, with Docker (4 CPU cores, no GPU). Every replica is SIMULATED: the mock engine of lesson 33 runs no model. Compose file infra/compose/checkpoint-37-3node.yml: three replicas, queue limit 8, 4 decode slots, base image python:3.12-slim-bookworm, pinned packages fastapi 0.156.8, uvicorn 0.54.0, prometheus-client 0.26.0. Workload seed 37: 120 requests, 16 in flight. The node-loss phase SIGKILLs r2 after 40 requests have finished; r2 is started again for the recovered phase, so its counter restarts at 0.",
+ "phases": {
+  "healthy": {
+   "calls": 120,
+   "ok": 120,
+   "retried_ok": 0,
+   "503": 0,
+   "conn_error": 0,
+   "failed": 0,
+   "served": {
+    "r1": 40,
+    "r2": 40,
+    "r3": 40
+   },
+   "killed": null,
+   "rejected_by": {
+    "r1": 0,
+    "r2": 0,
+    "r3": 0
+   },
+   "rejected": 0,
+   "snap_before": {
+    "r1": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 0,
+     "rejections": 0
+    },
+    "r2": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 0,
+     "rejections": 0
+    },
+    "r3": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 0,
+     "rejections": 0
+    }
+   },
+   "snap_after": {
+    "r1": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    },
+    "r2": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    },
+    "r3": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    }
+   }
+  },
+  "node loss": {
+   "calls": 128,
+   "ok": 120,
+   "retried_ok": 8,
+   "503": 3,
+   "conn_error": 5,
+   "failed": 0,
+   "served": {
+    "r1": 52,
+    "r2": 16,
+    "r3": 52
+   },
+   "killed": "r2",
+   "rejected_by": {
+    "r1": 2,
+    "r2": null,
+    "r3": 1
+   },
+   "rejected": 3,
+   "snap_before": {
+    "r1": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    },
+    "r2": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    },
+    "r3": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    }
+   },
+   "snap_after": {
+    "r1": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 92,
+     "rejections": 2
+    },
+    "r2": null,
+    "r3": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 92,
+     "rejections": 1
+    }
+   }
+  },
+  "recovered": {
+   "calls": 120,
+   "ok": 120,
+   "retried_ok": 0,
+   "503": 0,
+   "conn_error": 0,
+   "failed": 0,
+   "served": {
+    "r1": 40,
+    "r2": 40,
+    "r3": 40
+   },
+   "killed": null,
+   "rejected_by": {
+    "r1": 0,
+    "r2": 0,
+    "r3": 0
+   },
+   "rejected": 0,
+   "snap_before": {
+    "r1": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 92,
+     "rejections": 2
+    },
+    "r2": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 0,
+     "rejections": 0
+    },
+    "r3": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 92,
+     "rejections": 1
+    }
+   },
+   "snap_after": {
+    "r1": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 132,
+     "rejections": 2
+    },
+    "r2": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 40,
+     "rejections": 0
+    },
+    "r3": {
+     "running": 0,
+     "waiting": 0,
+     "kv": 0.0,
+     "success": 132,
+     "rejections": 1
+    }
+   }
+  }
+ }
+}

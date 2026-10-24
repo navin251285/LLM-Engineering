@@ -1,0 +1,34 @@
+# Lesson 32: the vLLM server packaged as one Compose service. Same pinned CPU image and flags as lesson 08.
+# Run from notebooks/: docker compose -p tut-kv-forge-15h-32 -f ../infra/compose/serve-32.yml up -d
+# No secret is in this file. The API key, if you set one, is passed at run time (lesson 16), never written here.
+# SERVE_MODEL overrides the model with one shell variable; the default is the Brightside model from lesson 08.
+services:
+  serve:
+    image: vllm/vllm-openai-cpu:v0.32.0
+    command:
+      - "${SERVE_MODEL:-Qwen/Qwen2.5-0.5B-Instruct}"
+      - "--served-model-name"
+      - "brightside"
+      - "--host"
+      - "0.0.0.0"
+      - "--dtype"
+      - "float32"
+      - "--enforce-eager"
+      - "--max-model-len"
+      - "4096"
+      - "--max-num-seqs"
+      - "4"
+      - "--kv-cache-memory-bytes"
+      - "2147483648"
+    ports:
+      - "127.0.0.1:8320:8000"
+    shm_size: "4g"
+    restart: "no"
+    volumes:
+      - "${HOME}/.cache/huggingface:/root/.cache/huggingface"
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).status == 200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+      start_period: 60s

@@ -1,0 +1,1 @@
+{"prefill_ms_per_1k_tokens": 150, "decode_base_ms": 6, "decode_ms_per_running": 3, "max_running": 4}

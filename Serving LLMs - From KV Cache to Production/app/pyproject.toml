@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=72"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brightside-desk"
+version = "0.2.0"
+description = "Brightside support desk: a FastAPI service that asks a local vLLM engine one question at a time"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.150.0",
+    "uvicorn>=0.54.0",
+    "httpx>=0.28.1",
+    "openai>=2.20.0,<3.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=9.1.1",
+    "vcrpy>=8.3.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+brightside_desk = ["static/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

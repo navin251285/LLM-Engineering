@@ -1,0 +1,39 @@
+{
+ "note": "live run of this notebook on the course machine (4 CPU cores, no GPU): three SIMULATED vLLM replicas (r1, r2, r3) in Docker Compose (python:3.12-slim-bookworm, fastapi 0.156.8, prometheus-client 0.26.0); no model ran; metric names as vLLM exposes them; r1 page after the runs",
+ "results": {
+  "round-robin": {
+   "ok": 120,
+   "errors": 0,
+   "hit_rate": 0.604,
+   "served": {
+    "r1": 40,
+    "r2": 40,
+    "r3": 40
+   },
+   "p95_s": 2.42
+  },
+  "prefix-aware": {
+   "ok": 120,
+   "errors": 0,
+   "hit_rate": 0.838,
+   "served": {
+    "r1": 54,
+    "r2": 34,
+    "r3": 32
+   },
+   "p95_s": 2.09
+  },
+  "token-budget": {
+   "ok": 120,
+   "errors": 0,
+   "hit_rate": 0.58,
+   "served": {
+    "r1": 35,
+    "r2": 48,
+    "r3": 37
+   },
+   "p95_s": 2.37
+  }
+ },
+ "metrics_text": "# HELP vllm:num_requests_running Requests in the batch\n# TYPE vllm:num_requests_running gauge\nvllm:num_requests_running 0.0\n# HELP vllm:num_requests_waiting Requests waiting for a slot\n# TYPE vllm:num_requests_waiting gauge\nvllm:num_requests_waiting 0.0\n# HELP vllm:kv_cache_usage_perc KV cache usage (0 to 1)\n# TYPE vllm:kv_cache_usage_perc gauge\nvllm:kv_cache_usage_perc 0.26666666666666666\n# HELP vllm:prefix_cache_queries_total Prompt tokens queried against the prefix cache\n# TYPE vllm:prefix_cache_queries_total counter\nvllm:prefix_cache_queries_total 198559.0\n# HELP vllm:prefix_cache_queries_created Prompt tokens queried against the prefix cache\n# TYPE vllm:prefix_cache_queries_created gauge\nvllm:prefix_cache_queries_created 1.7927559884666984e+09\n# HELP vllm:prefix_cache_hits_total Prompt tokens found in the prefix cache\n# TYPE vllm:prefix_cache_hits_total counter\nvllm:prefix_cache_hits_total 139872.0\n# HELP vllm:prefix_cache_hits_created Prompt tokens found in the prefix cache\n# TYPE vllm:prefix_cache_hits_created gauge\nvllm:prefix_cache_hits_created 1.7927559884667122e+09\n# HELP vllm:request_success_total Finished requests\n# TYPE vllm:request_success_total counter\nvllm:request_success_total 129.0\n# HELP vllm:request_success_created Finished requests\n# TYPE vllm:request_success_created gauge\nvllm:request_success_created 1.7927559884667227e+09\n"
+}

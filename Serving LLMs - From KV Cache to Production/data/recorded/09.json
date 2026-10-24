@@ -1,0 +1,27 @@
+{
+ "lesson": "09",
+ "image": "vllm/vllm-openai-cpu:v0.32.0",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "recorded": "2026-10-22",
+ "note": "recorded output: a live run of notebook 09 on the pinned CPU image (warm-up 603 s, not counted)",
+ "rows": [
+  {
+   "concurrency": 1,
+   "n": 12,
+   "ttft_p50_s": 0.876,
+   "ttft_p95_s": 0.992
+  },
+  {
+   "concurrency": 2,
+   "n": 12,
+   "ttft_p50_s": 1.141,
+   "ttft_p95_s": 1.913
+  },
+  {
+   "concurrency": 4,
+   "n": 12,
+   "ttft_p50_s": 1.205,
+   "ttft_p95_s": 3.022
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "lesson": "32",
+ "note": "recorded output from a live run on the course machine (Docker, 4 CPU cores, no GPU); pinned vllm/vllm-openai-cpu:v0.32.0; kubeconform v0.8.0",
+ "config": {
+  "image": "vllm/vllm-openai-cpu:v0.32.0",
+  "ports": [
+   [
+    "127.0.0.1",
+    "8320",
+    8000
+   ]
+  ],
+  "shm_size": 4294967296,
+  "first_arguments": [
+   "Qwen/Qwen2.5-0.5B-Instruct",
+   "--served-model-name",
+   "brightside"
+  ]
+ },
+ "override_model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "trace": [
+  [
+   0,
+   "starting"
+  ],
+  [
+   96,
+   "healthy"
+  ]
+ ],
+ "health": 200,
+ "models": [
+  "brightside"
+ ],
+ "kubeconform_ok": "Summary: 3 resources found in 1 file - Valid: 3, Invalid: 0, Errors: 0, Skipped: 0",
+ "kubeconform_broken": "data/32/broken.yaml - Deployment brightside-serve is invalid: problem validating schema. Check JSON formatting: jsonschema validation failed with 'file://./infra/schemas/v1.33.0-standalone-strict/deployment-apps-v1.json#' - at '/spec/replicas': got string, want null or integer"
+}
